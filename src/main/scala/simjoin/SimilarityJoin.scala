@@ -20,5 +20,60 @@ class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Seriali
     
     null
   }
+
+  def extractRandom(numAnchors: Int, dataset: Dataset): Array[Row] = {
+    dataset.getRDD().takeSample(false, numAnchors)
+  }
+
+  def partitioning(dataset: Dataset, attrIndex: Int, anchorPoints: Array[Row]): String = {
+    val column : RDD[String] = dataset.getRDD()(attrIndex)
+    val anchors: Array[String] = anchorPoints()(attrIndex)
+
+    val closestAnchors : RDD[Int] = column.map(        //list of closest anchors to each element of the column
+                      element => assist(anchorPoints, element, anchors)
+                      )
+    val tuples = column.zip(closestAnchors)
+    val clusters = new Array[List[String]](numAnchors)
+    tuples.foreach(el => clusters(el._2) + el._1) //(el:String, num:Int) => clusters(num) + el )
+
+
+  }
+
+  def assist (anchorPoints: Array[Row], element: String, anchors: Array[String]): Int = {
+    {for (i <- 0 to anchorPoints.size) yield {
+      (distance(anchors(i), element), i)
+    }
+    }.reduce((a1, a2) => if (a1._1 < a2._1) a1._2 else a2._2)
+  }
+
+
+  def distance(first: String, second: String): Int = {
+    val matrix  = Array.ofDim[Int](first.length(), second.length())
+    for(i <- 0 to first.length()) {
+      matrix(i)(0) = i
+    }
+    for(j <- 1 to second.length()) {
+      matrix(0)(j) = j
+    }
+
+    for(i <- 1 to first.length()) {
+      for (j <- 1 to second.length()) {
+        if (first.charAt(i-1) != second.charAt(j-1)) {
+          val k = math.min(
+            math.min(
+              matrix(i)(j - 1),
+              matrix(i - 1)(j)),
+            matrix(i - 1)(j - 1)
+          )
+          matrix(i)(j) = k + 1
+        }
+        else matrix(i)(j) = matrix(i-1)(j-1)
+      }
+    }
+
+    matrix(first.length())(second.length())
+
+  }
+
 }
 
