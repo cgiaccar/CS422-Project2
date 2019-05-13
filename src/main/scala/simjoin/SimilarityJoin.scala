@@ -6,7 +6,6 @@ import org.apache.spark.sql.Row
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import simjoin.Distance
 
 class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Serializable {
   val logger = LoggerFactory.getLogger("SimilarityJoin")
@@ -31,7 +30,7 @@ class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Seriali
     val distancesToAnchors : RDD[(String, List[Int])] = column.map(//list of distances from a point to each anchors
       element => (element, computeDistances(element, anchors))
     )
-    val clusters: Array[RDD[String]] = for ((_,i) <- anchors.zipWithIndex) yield distancesToAnchors.filter(el => helper(el._2,i)).map(_._1)//new Array[RDD[String]](numAnchors)
+    for ((_,i) <- anchors.zipWithIndex) yield distancesToAnchors.filter(el => keepInPartition(el._2,i)).map(_._1)//new Array[RDD[String]](numAnchors)
 
     /*closestAnchors.foreach{case (name:String, list:List[Int]) => {
 
@@ -46,11 +45,11 @@ class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Seriali
 
     //val clusters = new Array[List[String]](numAnchors)
     //closestAnchors.foreach(el => clusters(el._2) + el._1) //(el:String, num:Int) => clusters(num) + el )
-    clusters
+
 
   }
 
-  def helper(list: List[Int], i: Int): Boolean = {
+  def keepInPartition(list: List[Int], i: Int): Boolean = {
     val (anchorIndex, closestDistance) = list.zipWithIndex.min
     if (anchorIndex == i)
       return true
