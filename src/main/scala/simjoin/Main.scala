@@ -12,6 +12,7 @@ import scala.io.Source
 import java.io._
 
 object Main {
+
   def main(args: Array[String]) {     
     val inputFile="../dblp_small.csv"    
     val numAnchors = 4
@@ -45,14 +46,14 @@ object Main {
             
     println((t2-t1)/(Math.pow(10,9)))
     
-    /*
+
     // cartesian
     val t1Cartesian = System.nanoTime
     val cartesian = rdd.map(x => (x(attrIndex), x)).cartesian(rdd.map(x => (x(attrIndex), x)))
-                                   .filter(x => (x._1._2(attrIndex).toString() != x._2._2(attrIndex).toString() && edit_distance(x._1._2(attrIndex).toString(), x._2._2(attrIndex).toString()) <= distanceThreshold))
+                                   .filter(x => (x._1._2(attrIndex).toString() != x._2._2(attrIndex).toString() && Distance.distance(x._1._2(attrIndex).toString(), x._2._2(attrIndex).toString()) <= distanceThreshold))
                                    
     println(cartesian.count)
     val t2Cartesian = System.nanoTime
-    println((t2Cartesian-t1Cartesian)/(Math.pow(10,9)))*/    
+    println((t2Cartesian-t1Cartesian)/(Math.pow(10,9)))
   }     
 }
