@@ -1,0 +1,72 @@
+Cartesian count: 46
+Cartesian time: 1.186887297
+partition size : 92
+partition size : 198
+SimJoin count: 46
+SimJoin time: 4.341662953
+partition size : 71
+partition size : 193
+partition size : 19
+partition size : 172
+SimJoin count: 46
+SimJoin time: 1.045246737
+partition size : 160
+partition size : 173
+partition size : 153
+partition size : 155
+partition size : 179
+partition size : 160
+SimJoin count: 46
+SimJoin time: 1.310842853
+partition size : 14
+partition size : 90
+partition size : 123
+partition size : 183
+partition size : 177
+partition size : 157
+partition size : 41
+partition size : 154
+SimJoin count: 46
+SimJoin time: 0.806143735
+partition size : 59
+partition size : 171
+partition size : 153
+partition size : 133
+partition size : 136
+partition size : 141
+partition size : 119
+partition size : 151
+partition size : 37
+partition size : 92
+SimJoin count: 46
+SimJoin time: 1.259950744
+partition size : 132
+partition size : 180
+partition size : 106
+partition size : 186
+partition size : 142
+partition size : 156
+partition size : 146
+partition size : 130
+partition size : 137
+partition size : 132
+partition size : 115
+partition size : 50
+SimJoin count: 46
+SimJoin time: 1.047514608
+partition size : 109
+partition size : 77
+partition size : 172
+partition size : 102
+partition size : 117
+partition size : 115
+partition size : 2
+partition size : 48
+partition size : 101
+partition size : 170
+partition size : 179
+partition size : 103
+partition size : 100
+partition size : 115
+SimJoin count: 46
+SimJoin time: 0.977754088

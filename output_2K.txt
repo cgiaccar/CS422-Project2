@@ -1,0 +1,72 @@
+Cartesian count: 700
+Cartesian time: 17.176068579
+partition size : 1970
+partition size : 1967
+SimJoin count: 700
+SimJoin time: 7.524101852
+partition size : 1886
+partition size : 1607
+partition size : 1935
+partition size : 1948
+SimJoin count: 700
+SimJoin time: 7.609495562
+partition size : 1942
+partition size : 1993
+partition size : 1980
+partition size : 1985
+partition size : 929
+partition size : 395
+SimJoin count: 700
+SimJoin time: 8.844134324
+partition size : 1568
+partition size : 1885
+partition size : 1834
+partition size : 1943
+partition size : 249
+partition size : 1541
+partition size : 199
+partition size : 1917
+SimJoin count: 700
+SimJoin time: 30.154506671
+partition size : 1027
+partition size : 1247
+partition size : 1434
+partition size : 1604
+partition size : 1877
+partition size : 883
+partition size : 1212
+partition size : 1204
+partition size : 1919
+partition size : 1832
+SimJoin count: 700
+SimJoin time: 13.776146883
+partition size : 1618
+partition size : 240
+partition size : 1514
+partition size : 1753
+partition size : 1476
+partition size : 1859
+partition size : 203
+partition size : 1583
+partition size : 1890
+partition size : 1764
+partition size : 1831
+partition size : 1589
+SimJoin count: 700
+SimJoin time: 15.315515456
+partition size : 1316
+partition size : 977
+partition size : 1571
+partition size : 1181
+partition size : 334
+partition size : 1732
+partition size : 1810
+partition size : 1222
+partition size : 1867
+partition size : 1643
+partition size : 1880
+partition size : 1419
+partition size : 1690
+partition size : 1880
+SimJoin count: 700
+SimJoin time: 19.681505457
