@@ -34,8 +34,13 @@ object Main {
 
     var groupingList = List("lo_suppkey","lo_shipmode","lo_orderdate")
 
-    val res = cb.cube(dataset, groupingList, "lo_supplycost", "SUM")
-
+    val t1Naive = System.nanoTime
+    //val res = cb.cube(dataset, groupingList, "lo_supplycost", "SUM")
+    val res = cb.cube_naive(dataset, groupingList, "lo_supplycost", "SUM")
+    val naiveSize = res.count()
+    val t2Naive = System.nanoTime
+    println("Naive count: " + naiveSize)
+    println("Naive time: " + (t2Naive-t1Naive)/(Math.pow(10,9)))
     /*
        The above call corresponds to the query:
        SELECT lo_suppkey, lo_shipmode, lo_orderdate, SUM (lo_supplycost)
@@ -45,10 +50,13 @@ object Main {
 
 
     //Perform the same query using SparkSQL
-    //    val q1 = df.cube("lo_suppkey","lo_shipmode","lo_orderdate")
-    //      .agg(sum("lo_supplycost") as "sum supplycost")
-    //    q1.show
-
-
+    val t1SQL = System.nanoTime
+    val q1 = df.cube("lo_suppkey","lo_shipmode","lo_orderdate")
+    .agg(sum("lo_supplycost") as "sum supplycost")
+    val SQLSize = q1.count()
+    val t2SQL = System.nanoTime
+    println("Count: " + SQLSize)
+    println("SQL time: " + (t2SQL-t1SQL)/(Math.pow(10,9)))
+    //q1.show(q1.count().toInt)
   }
 }
