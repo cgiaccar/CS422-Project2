@@ -1,72 +1,32 @@
 Cartesian count: 2036
-Cartesian time: 76.780782682
-partition size : 4848
-partition size : 4739
+Cartesian time: 80.35170262
+Num anchors: 2
 SimJoin count: 2036
-SimJoin time: 47.015328306
-partition size : 4915
-partition size : 4863
-partition size : 4807
-partition size : 4791
+SimJoin time: 39.702434919
+Num anchors: 4
 SimJoin count: 2036
-SimJoin time: 41.902699895
-partition size : 402
-partition size : 4325
-partition size : 3814
-partition size : 4489
-partition size : 3717
-partition size : 3846
+SimJoin time: 48.31058626
+Num anchors: 6
 SimJoin count: 2036
-SimJoin time: 69.53298456
-partition size : 4451
-partition size : 2129
-partition size : 2547
-partition size : 4345
-partition size : 2805
-partition size : 1033
-partition size : 2513
-partition size : 4622
+SimJoin time: 45.045847313
+Num anchors: 8
 SimJoin count: 2036
-SimJoin time: 101.637634128
-partition size : 3699
-partition size : 3979
-partition size : 2220
-partition size : 4332
-partition size : 4279
-partition size : 4417
-partition size : 64
-partition size : 4528
-partition size : 4044
-partition size : 1392
+SimJoin time: 45.006575266
+Num anchors: 10
 SimJoin count: 2036
-SimJoin time: 120.427009967
-partition size : 4868
-partition size : 4155
-partition size : 2321
-partition size : 4238
-partition size : 3606
-partition size : 4646
-partition size : 2155
-partition size : 4607
-partition size : 4647
-partition size : 1172
-partition size : 3365
-partition size : 4701
+SimJoin time: 76.217767046
+Num anchors: 12
 SimJoin count: 2036
-SimJoin time: 119.497942595
-partition size : 3637
-partition size : 1275
-partition size : 4160
-partition size : 3759
-partition size : 4202
-partition size : 4246
-partition size : 3068
-partition size : 4196
-partition size : 2206
-partition size : 3262
-partition size : 605
-partition size : 3050
-partition size : 3524
-partition size : 3958
+SimJoin time: 53.084302755
+Num anchors: 14
 SimJoin count: 2036
-SimJoin time: 49.819601009
+SimJoin time: 69.838084505
+Num anchors: 16
+SimJoin count: 2036
+SimJoin time: 62.180506435
+Num anchors: 32
+SimJoin count: 2036
+SimJoin time: 75.232403644
+Num anchors: 64
+SimJoin count: 2036
+SimJoin time: 82.906265722
