@@ -27,15 +27,14 @@ class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Seriali
     //******************************************************************************************************************
     val partitions: Array[RDD[String]] = partitioning(anchors)
 
-    ((for(par <- partitions) yield computeJoin(par)).reduce(_ union _)).distinct()
+    (for(par <- partitions) yield computeJoin(par)).reduce(_ union _)
   }
 
 
   def partitioning(anchors: Array[String]): Array[RDD[String]] = {
-    val column : RDD[String] = rdd
-
-    val distancesToAnchors : RDD[(String, List[Int])] = column.map(//list of distances from a point to each anchors
-      element => (element, computeDistances(element, anchors))
+    val distancesToAnchors : RDD[(String, (List[Int], List[Int]))] = rdd.map(//list of distances from a point to each anchors
+      //for each element map it to (element, List(distanceToAnchors), List(outerPartitionAnchorsId)
+      element => (element, computeDistancesAndOutter(element, anchors))
     ).persist()
 
     // For debug
@@ -45,7 +44,7 @@ class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Seriali
     //d1.foreach(println)
     //******************************************************************************************************************
 
-    val res = for ((_,i) <- anchors.zipWithIndex) yield distancesToAnchors.filter(el => keepInPartition(el._2, i)).map(_._1).persist()
+    val res = for ((_,i) <- anchors.zipWithIndex) yield distancesToAnchors.filter(el => keepInPartition(el._2._1, el._2._2, i)).map(_._1).persist()
 
     // For debug
     //******************************************************************************************************************
@@ -65,14 +64,14 @@ class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Seriali
     res
   }
 
-  def keepInPartition(list: List[Int], i: Int): Boolean = {
+  def keepInPartition(list: List[Int], outter: List[Int], i: Int): Boolean = {
     val (closestDistance, anchorIndex) = list.zipWithIndex.min
 
     if (anchorIndex == i)
       return true
 
-    if (list(i) <= closestDistance + 2 * distThreshold)
-      return true
+    if (outter.nonEmpty && outter.head == i)
+        return true
 
     false
   }
@@ -98,10 +97,15 @@ class SimilarityJoin(numAnchors: Int, distThreshold:Int) extends java.io.Seriali
   }
   //********************************************************************************************************************
 
-  def computeDistances (element: String, anchors: Array[String]): List[Int] = {
-    (for (a <- anchors) yield {
+  def computeDistancesAndOutter (element: String, anchors: Array[String]): (List[Int], List[Int]) = {
+    val list = (for (a <- anchors) yield {
       Distance.distance(element, a)
     }).toList
+
+    val closestDistance = list.min
+
+    val outer:List[Int] = for ((d,i) <- list.zipWithIndex if (d <= closestDistance + 2 * distThreshold)) yield (i)
+    (list, outer.sorted)
   }
 
   def computeJoin (partition: RDD[String]): RDD[(String, String)] = {
