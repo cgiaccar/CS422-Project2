@@ -1,0 +1,105 @@
+Number of reducers: 1
+groupingList: List(lo_suppkey, lo_shipmode)
+Naive count: 1608
+Naive time: 4.945619086
+Cube count: 1608
+Cube time: 0.899316115
+Sizes match:true
+Number of reducers: 1
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate)
+Naive count: 911576
+Naive time: 5.196752564
+Cube count: 911576
+Cube time: 20.749812919
+Sizes match:true
+Number of reducers: 1
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate, lo_quantity)
+Naive count: 2731169
+Naive time: 13.911926058
+Cube count: 2731169
+Cube time: 44.202214103
+Sizes match:true
+Number of reducers: 5
+groupingList: List(lo_suppkey, lo_shipmode)
+Naive count: 1608
+Naive time: 2.471426783
+Cube count: 1608
+Cube time: 0.550101555
+Sizes match:true
+Number of reducers: 5
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate)
+Naive count: 911576
+Naive time: 4.55464977
+Cube count: 911576
+Cube time: 10.183109727
+Sizes match:true
+Number of reducers: 5
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate, lo_quantity)
+Naive count: 2731169
+Naive time: 12.528383945
+Cube count: 2731169
+Cube time: 14.874740573
+Sizes match:true
+Number of reducers: 10
+groupingList: List(lo_suppkey, lo_shipmode)
+Naive count: 1608
+Naive time: 1.161145842
+Cube count: 1608
+Cube time: 0.563359677
+Sizes match:true
+Number of reducers: 10
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate)
+Naive count: 911576
+Naive time: 4.308445625
+Cube count: 911576
+Cube time: 9.005247874
+Sizes match:true
+Number of reducers: 10
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate, lo_quantity)
+Naive count: 2731169
+Naive time: 13.542210586
+Cube count: 2731169
+Cube time: 11.287700729
+Sizes match:true
+Number of reducers: 15
+groupingList: List(lo_suppkey, lo_shipmode)
+Naive count: 1608
+Naive time: 1.805531886
+Cube count: 1608
+Cube time: 0.476013631
+Sizes match:true
+Number of reducers: 15
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate)
+Naive count: 911576
+Naive time: 4.019302786
+Cube count: 911576
+Cube time: 10.762595848
+Sizes match:true
+Number of reducers: 15
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate, lo_quantity)
+Naive count: 2731169
+Naive time: 10.904419917
+Cube count: 2731169
+Cube time: 15.527277033
+Sizes match:true
+Number of reducers: 20
+groupingList: List(lo_suppkey, lo_shipmode)
+Naive count: 1608
+Naive time: 4.191660668
+Cube count: 1608
+Cube time: 0.499352056
+Sizes match:true
+Number of reducers: 20
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate)
+Naive count: 911576
+Naive time: 4.250145442
+Cube count: 911576
+Cube time: 9.149380336
+Sizes match:true
+Number of reducers: 20
+groupingList: List(lo_suppkey, lo_shipmode, lo_orderdate, lo_quantity)
+Naive count: 2731169
+Naive time: 14.75578416
+Cube count: 2731169
+Cube time: 16.248708123
+Sizes match:true

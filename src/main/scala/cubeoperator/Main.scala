@@ -18,8 +18,8 @@ object Main {
   def main(args: Array[String]) {
     //val reducers = 10
 
-    //val inputFile= "../lineorder_small.tbl"
-    val inputFile="/user/cs422-group20/testEx2/lineorder_small.tbl"
+    //val inputFile= "../lineorder_smaller.tbl"
+    val inputFile="/user/cs422-group20/testEx2/lineorder_big.tbl"
     //val input = new File(getClass.getResource(inputFile).getFile).getPath
 
     val sparkConf = new SparkConf().setAppName("CS422-Project2")//.setMaster("local[16]")
@@ -62,6 +62,7 @@ object Main {
         println("Cube count: " + cubeSize)
         println("Cube time: " + (t2Cube-t1Cube)/(Math.pow(10,9)))
 
+
         /*
            The above call corresponds to the query:
            SELECT lo_suppkey, lo_shipmode, lo_orderdate, SUM (lo_supplycost)
@@ -72,16 +73,54 @@ object Main {
 
         //Perform the same query using SparkSQL
         /*val t1SQL = System.nanoTime
-        val col1 = "lo_suppkey"
-        val col2 = groupingList._2
-        val q1 = df.cube(col1, col2)//"lo_suppkey","lo_shipmode","lo_orderdate")
+        val q1 = df.cube("lo_suppkey", "lo_shipmode","lo_orderdate", "lo_quantity")//"lo_suppkey","lo_shipmode","lo_orderdate")
           .agg(sum("lo_supplycost") as "sum supplycost")
         val SQLSize = q1.count()
         val t2SQL = System.nanoTime
         println("Count: " + SQLSize)
         println("SQL time: " + (t2SQL-t1SQL)/(Math.pow(10,9)))*/
 
-        println("Sizes match:" + (naiveSize == cubeSize))
+        println("Sizes match:" + ( naiveSize == cubeSize))
+        /*q1.show(q1.count().toInt)
+        val test = resNaive.collect()
+        q1.foreach{r =>
+          var key = ""
+          if (r.get(0) == null)
+            key += ""
+          else
+            key += r.get(0).toString
+
+          if (r.get(1) == null)
+            key += ""
+          else
+            if (key.isEmpty())
+                key += r.get(1).toString
+          else
+            key += ", " + r.get(1).toString
+
+          if (r.get(2)== null)
+            key += ""
+          else
+            if (key.isEmpty())
+              key += r.get(2).toString
+            else
+              key += ", " + r.get(2).toString
+
+          if (r.get(3) == null)
+            key += ""
+          else
+            if (key.isEmpty())
+              key += r.get(3).toString
+            else
+              key += ", " + r.get(3).toString
+
+          key += ")"
+          val t = ("List(" + key, r.get(4))
+          if (!test.contains(t)){
+            println("naive does not contain" + t)
+          }
+
+        }*/
       }
     }
   }
